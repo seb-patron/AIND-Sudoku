@@ -123,7 +123,9 @@ def only_choice(puzzle):
                # if there is only 1 box in the unit that can have the current digit,
                # that digit must be a solution.
                if len(boxes_that_have_digit) == 1:
-                    puzzle[boxes_that_have_digit[0]] = digit
+                    # puzzle[boxes_that_have_digit[0]] = digit
+                    for box in boxes_that_have_digit:
+                        assign_value(puzzle, box, digit)
 
      return puzzle
      pass
@@ -191,7 +193,9 @@ Returns:
      The dictionary representation of the final sudoku grid. False if no solution exists.
 """
 def solve(grid):
-
+     puzzle = grid_values(grid)
+     answer = search(puzzle)
+     return answer
      pass
 
 
